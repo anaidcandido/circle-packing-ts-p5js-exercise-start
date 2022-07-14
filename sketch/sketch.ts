@@ -4,7 +4,7 @@ function setup() {
 }
 
 function draw() {
-  background('white');
+  background('yellow');
 
   const circlesArray = calculatePackedCircles(width, height);
 
