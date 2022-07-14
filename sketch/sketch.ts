@@ -4,7 +4,7 @@ function setup() {
 }
 
 function draw() {
-  background('yellow');
+  background ("#1c2130");
 
   const circlesArray = calculatePackedCircles(width, height);
 
@@ -13,8 +13,15 @@ function draw() {
   }
 }
 
+const palette = [
+  "#028f76",
+  "#b3e099",
+  "#ffeaad",
+  "#d14334"
+]
+
 function drawCircle(c: Circle) {
-  const shade = random(50, 100);
+  const shade = random(palette);
   fill(shade);
   noStroke();
   circle(c.pos.x, c.pos.y, c.radius * 2);
