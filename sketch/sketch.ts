@@ -9,7 +9,10 @@ function draw() {
   const circlesArray = calculatePackedCircles(width, height);
 
   for (const c of circlesArray) {
-    drawCircle(c);
+    const threshold = 100
+    if (c.radius < threshold){
+      drawCircle(c);
+    }
   }
 }
 
