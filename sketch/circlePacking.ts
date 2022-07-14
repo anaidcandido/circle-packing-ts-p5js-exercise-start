@@ -10,12 +10,11 @@ interface Position {
 
 function calculatePackedCircles(areaWidth: number, areaHeight: number): Circle[] {
     let validatedCircles: Circle[] = []
-    for (let i=0; i<10; i++){
+    for (let i=0; i<100; i++){
         let candidate: Circle = generateCandidate(areaWidth, areaHeight) 
         let isCircleValid: boolean = true 
         for (let circle of validatedCircles) {
-            let circlesDist: number = dist(candidate.pos.x, candidate.pos.y, circle.pos.x, circle.pos.y)
-            if (circlesDist < (candidate.radius + circle.radius)){
+            if (doCircleOverlap (candidate, circle) === true ){
                 isCircleValid = false
             }
         } if (isCircleValid === true ){
@@ -27,7 +26,12 @@ function calculatePackedCircles(areaWidth: number, areaHeight: number): Circle[]
 
 function generateCandidate (areaWidth: number, areaHeight: number): Circle{    
     return {pos: {x: random(0, areaWidth), y: random(0, areaHeight)},
-        radius: random(50, 200)}
+        radius: random(10, 50)}
+}
+
+function doCircleOverlap (candidate: Circle, circle: Circle): boolean{
+    let circlesDist: number = dist(candidate.pos.x, candidate.pos.y, circle.pos.x, circle.pos.y)
+    return circlesDist < (candidate.radius + circle.radius)
 }
 /** Returns the distance between two given positions.
     This function doesn't require p5.js 
